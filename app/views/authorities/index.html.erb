@@ -1,0 +1,17 @@
+<div class="main">
+	<div class="container menu">
+		<h4>All Authorities</h4>
+			<% @authorities.each do |authority| %>
+        <div class="content">
+					<div class="menu">
+						<%= authority.name %>
+						<div>
+							<%= link_to :edit, edit_authority_path(authority) %>
+							<%= link_to :delete, authority, method: :delete %>
+						</div>
+					</div>
+        </div>
+			<% end %>
+			<%= link_to "Add Authority", new_authority_path %>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Training Menu Details
+    </div>
+    <%= form_with model: @trainingmenu do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, disabled: true %>
+      <% @trainingmenu.trainingdetails.order(order: :desc).each_with_index do |trainingdetail, i| %>
+        <%= f.select "training_id[#{i}]", options_from_collection_for_select(@trainings.all, :id, :name, trainingdetail.training_id) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

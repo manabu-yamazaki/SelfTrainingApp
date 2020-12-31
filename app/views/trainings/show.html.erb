@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Training Details
+    </div>
+    <%= form_with model: @training do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, disabled: true %>
+      <%= f.label :explanation %>
+      <%= f.text_field :explanation, disabled: true %>
+      <%= f.label :url %>
+      <%= f.text_field :url, disabled: true %>
+      <%= f.label :time %>
+      <%= f.text_field :time, disabled: true %>
+    <% end %>
+  </div>
+</div>

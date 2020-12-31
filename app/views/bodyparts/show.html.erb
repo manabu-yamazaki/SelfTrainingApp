@@ -1,0 +1,11 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      BodyPart Details
+    </div>
+    <%= form_with model: @bodypart do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, disabled: true %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Signup
+    </div>
+    <%= form_with model: @user do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.submit "Signup", disable_with: 'Signuping...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+  <% @user.errors.full_messages.each do |message| %>
+    <div class="form_error">
+      <%= @message %>
+    </div>
+  <% end %>
+</div>

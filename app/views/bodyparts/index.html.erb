@@ -1,0 +1,17 @@
+<div class="main">
+	<div class="container menu">
+		<h4>All BodyParts</h4>
+			<% @bodyparts.each do |bodypart| %>
+        <div class="content">
+					<div class="menu">
+						<%= bodypart.name %>
+						<div>
+							<%= link_to :edit, edit_bodypart_path(bodypart) %>
+							<%= link_to :delete, bodypart, method: :delete %>
+						</div>
+					</div>
+        </div>
+			<% end %>
+			<%= link_to "Add Bodypart", new_bodypart_path %>
+	</div>
+</div>

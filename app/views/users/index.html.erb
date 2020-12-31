@@ -1,0 +1,17 @@
+<div class="main">
+	<div class="container menu">
+		<h4>All users</h4>
+			<% @users.each do |user| %>
+        <div class="content">
+					<div class="menu">
+						<%= user.name %>
+						<div>
+							<%= link_to :edit, edit_user_path(user) %>
+							<%= link_to :delete, user, method: :delete %>
+						</div>
+					</div>
+        </div>
+			<% end %>
+			<%= link_to "Add User", new_user_path %>
+	</div>
+</div>

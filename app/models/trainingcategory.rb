@@ -1,0 +1,2 @@
+class Trainingcategory < ApplicationRecord
+end

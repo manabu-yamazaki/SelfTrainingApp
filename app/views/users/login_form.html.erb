@@ -1,0 +1,26 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Login
+    </div>
+    <!--<%= form_tag("/login") do %>
+      <h6>Name</h6>
+      <input type="text" name="name" value="<%= @name %>">
+      <h6>Password</h6>
+      <input type="password" name="password" value="<%= @password %>">
+      <input type="submit" value="Login">
+    <% end %>-->
+    <%= form_with url: :login, method: :post do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.submit "Login", disable_with: 'Logining...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+</div>

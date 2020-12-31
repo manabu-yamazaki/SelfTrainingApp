@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SelfTrainingApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to :SelfTrainingApp, "/" %>
+      </div>
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <ul class="header-menus">
+        <% if @current_user %>
+          <li>
+            <%= link_to @current_user.name, user_path(@current_user) %>
+          </li>
+          <li>
+            <%= link_to "New Menus", new_trainingmenu_path %>
+          </li>
+          <li>
+            <%= link_to "My Menus", trainingmenus_path %>
+          </li>
+          <li>
+            <%= link_to "Add Training", new_training_path %>
+          </li>
+          <li>
+            <%= link_to "My Trainings", trainings_path %>
+          </li>
+          <% if @current_user.authority_id == 0 %>
+            <li>
+              <%= link_to :Maintenance, maintenance_path %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to :Logout, logout_path, method: :post %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to :About, "/" %>
+          </li>
+          <li>
+            <%= link_to :Signup, new_user_path %>
+          </li>
+          <li>
+            <%= link_to :Login, login_path %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

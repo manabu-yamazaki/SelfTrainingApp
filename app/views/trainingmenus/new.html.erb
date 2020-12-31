@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Create New Training Menu
+    </div>
+    <%= form_with model: @trainingmenu do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit "Create", disable_with: 'Createing...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+  <% @trainingmenu.errors.full_messages.each do |message| %>
+    <div class="form_error">
+      <%= @message %>
+    </div>
+  <% end %>
+</div>

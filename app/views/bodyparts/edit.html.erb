@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      BodyPart Edit
+    </div>
+    <%= form_with model: @bodypart do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit "Update", disable_with: 'Updateing...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+  <% @bodypart.errors.full_messages.each do |message| %>
+    <div class="form_error">
+      <%= @message %>
+    </div>
+  <% end %>
+</div>

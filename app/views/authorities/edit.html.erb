@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Authority Edit
+    </div>
+    <%= form_with model: @authority do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.submit "Update", disable_with: 'Updateing...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+  <% @authority.errors.full_messages.each do |message| %>
+    <div class="form_error">
+      <%= @message %>
+    </div>
+  <% end %>
+</div>

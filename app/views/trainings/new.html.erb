@@ -1,0 +1,30 @@
+<div class="main">
+  <div class="form">
+    <div class="title">
+      Create New Training
+    </div>
+    <%= form_with model: @training do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :explanation %>
+      <%= f.text_field :explanation %>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+      <%= f.label :time %>
+      <%= f.text_field :time %>
+      <%= f.label :strength %>
+      <%= f.text_field :strength %>
+      <%= f.submit "Create", disable_with: 'Createing...' %>
+    <% end %>
+  </div>
+  <% if @error_message %>
+    <div class="form_error">
+      <%= @error_message %>
+    </div>
+  <% end %>
+  <% @training.errors.full_messages.each do |message| %>
+    <div class="form_error">
+      <%= @message %>
+    </div>
+  <% end %>
+</div>

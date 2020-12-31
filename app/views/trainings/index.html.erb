@@ -1,0 +1,17 @@
+<div class="main">
+	<div class="container menu">
+		<h4>All Trainings</h4>
+			<% @trainings.each do |training| %>
+        <div class="content">
+					<div class="menu">
+						<%= training.name %>
+						<div>
+							<%= link_to :edit, edit_training_path(training) %>
+							<%= link_to :delete, training, method: :delete %>
+						</div>
+					</div>
+        </div>
+			<% end %>
+			<%= link_to "Add Training", new_training_path %>
+	</div>
+</div>
