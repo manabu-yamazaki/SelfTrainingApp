@@ -32,11 +32,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @authorities = Authority.all
+    # @authorities = Authority.all
   end
 
   def show
     @user = User.find(params[:id])
+    # @authorities = Authority.all
   end
 
   def update
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(name: params[:name])
-    if ~@user.nil? && @user.authenticate(params[:password])
+    if !@user.nil? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = 'ログインしました。'
       # redirect_to先は未定

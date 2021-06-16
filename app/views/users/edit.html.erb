@@ -7,7 +7,7 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       <%= f.label :authority_id, "Authority" %>
-      <%= f.select :authority_id, Authority.all.collect %>
+      <%= f.collection_select :authority_id, Authority.all, :id, :name %>
       <%= f.submit "Update", disable_with: 'Updateing...' %>
     <% end %>
   </div>

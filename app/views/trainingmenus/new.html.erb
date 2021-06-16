@@ -3,9 +3,14 @@
     <div class="title">
       Create New Training Menu
     </div>
-    <%= form_with model: @trainingmenu do |f| %>
+    <%= form_with model: @trainingmenu, local: true do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
+      <%= f.label :training_id, "Trainings" %>
+      <%= f.fields_for :trainingmenudetails do |trainingmenudetail| %>
+        <%= trainingmenudetail.collection_select :training_id, Training.where(user_id: @current_user.id).or(Training.where(user_id: nil)), :id, :name, include_blank: "選択して下さい" %>
+        <%= trainingmenudetail.hidden_field :order, value: 1 %>
+      <% end %>
       <%= f.submit "Create", disable_with: 'Createing...' %>
     <% end %>
   </div>

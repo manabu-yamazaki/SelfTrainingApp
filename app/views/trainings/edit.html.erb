@@ -14,6 +14,10 @@
       <%= f.text_field :time %>
       <%= f.label :strength %>
       <%= f.text_field :strength %>
+      <%= f.label :trainingcategory_id, "TrainingCategory" %>
+      <%= f.collection_select :trainingcategory_id, Trainingcategory.all, :id, :name %>
+      <%= f.label :bodypart_id, "BodyPart" %>
+      <%= f.collection_select :bodypart_id, Bodypart.all, :id, :name %>
       <%= f.submit "Update", disable_with: 'Updateing...' %>
     <% end %>
   </div>

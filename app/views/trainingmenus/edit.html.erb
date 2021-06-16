@@ -3,15 +3,14 @@
     <div class="title">
       Training Menu Edit
     </div>
-    <%= form_with model: @trainingmenu do |f| %>
+    <%= form_with model: @trainingmenu, local: true do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
       <%= f.label :training_id, "Trainings" %>
-      <% @trainingmenu.trainingdetails.order(order: :desc).each_with_index do |trainingdetail, i| %>
-        <%= f.select "training_id[#{i}]", options_from_collection_for_select(@trainings.all, :id, :name, trainingdetail.training_id) %>
+      <%= f.fields_for :trainingmenudetails do |trainingmenudetail| %>
+        <%= trainingmenudetail.collection_select :training_id, Training.where(user_id: @current_user.id).or(Training.where(user_id: nil)), :id, :name, include_blank: "選択して下さい" %>
+        <%= trainingmenudetail.number_field :order, in: 1..@trainingmenu.trainingmenudetails.count, step: 1 %>
       <% end %>
-      <%= f.check_box :has_new %>
-      <%= f.select :training_id, options_from_collection_for_select(@trainings.all, :id, :name) %>
       <%= f.submit "Update", disable_with: 'Updateing...' %>
     <% end %>
   </div>
@@ -22,7 +21,7 @@
   <% end %>
   <% @trainingmenu.errors.full_messages.each do |message| %>
     <div class="form_error">
-      <%= @message %>
+      <%= message %>
     </div>
   <% end %>
 </div>

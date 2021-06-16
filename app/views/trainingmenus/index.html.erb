@@ -1,13 +1,18 @@
 <div class="main">
 	<div class="container menu">
-		<h4>All Menus</h4>
+		<h4>All Training Menus</h4>
 		<% @trainingmenus.each do |trainingmenu| %>
 			<div class="content">
 				<div class="menu">
 					<%= trainingmenu.name %>
+          <div>
+            <%= link_to :edit, edit_trainingmenu_path(trainingmenu) %>
+            <%= link_to :delete, trainingmenu, method: :delete %>
+          </div>
 				</div>
 			</div>
 		<% end %>
+    <%= link_to "Add Training Menu", new_trainingmenu_path %>
 	</div>
 	<div class="container exec">
 		<div class="content search">

@@ -14,6 +14,10 @@
       <%= f.text_field :time %>
       <%= f.label :strength %>
       <%= f.text_field :strength %>
+      <%= f.label :trainingcategory_id, "TrainingCategory" %>
+      <%= f.collection_select :trainingcategory_id, Trainingcategory.all, :id, :name, :prompt => "選択して下さい" %>
+      <%= f.label :bodypart_id, "BodyPart" %>
+      <%= f.collection_select :bodypart_id, Bodypart.all, :id, :name, :prompt => "選択して下さい" %>
       <%= f.submit "Create", disable_with: 'Createing...' %>
     <% end %>
   </div>

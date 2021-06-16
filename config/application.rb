@@ -31,5 +31,7 @@ module SelfTrainingApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # 日本語のエラーメッセージ表示
+    config.i18n.default_locale = :ja
   end
 end
